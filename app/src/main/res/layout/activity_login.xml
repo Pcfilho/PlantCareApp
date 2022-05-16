@@ -45,6 +45,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPlant"
         app:layout_constraintVertical_bias="0.139" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/white"
+        android:text="cadastre-se"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
     <TextView
         android:id="@+id/tvPlant"
         android:layout_width="wrap_content"

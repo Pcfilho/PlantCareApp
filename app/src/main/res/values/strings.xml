@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlantTeste</string>
+    <string name="lista_de_plantas">Lista de Plantas</string>
 </resources>
