@@ -188,7 +188,7 @@
     </androidx.cardview.widget.CardView>
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchAutomacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -201,7 +201,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView6" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonIrrigar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange"
@@ -210,7 +210,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/switchAutomacao" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"

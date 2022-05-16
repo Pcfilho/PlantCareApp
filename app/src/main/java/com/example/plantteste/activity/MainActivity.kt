@@ -8,7 +8,6 @@ import com.example.plantteste.mqtt.MQTTmanager
 
 class MainActivity : AppCompatActivity() {
 
-    var mqttManager: MQTTmanager? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
