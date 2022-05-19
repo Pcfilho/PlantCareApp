@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.example.plantteste"
         minSdk 21
-        targetSdk 32
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 
@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -42,8 +45,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // MQTT Paho Eclipse
-    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.4'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
 
     implementation 'com.github.Gruzer:simple-gauge-android:0.3.1'
 

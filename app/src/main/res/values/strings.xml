@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">PlantTeste</string>
+    <string name="app_name">PlantCare</string>
     <string name="lista_de_plantas">Lista de Plantas</string>
+    <string name="status">Status</string>
+    <string name="umidade_do_solo">Umidade do Solo</string>
+    <string name="luminosidade">Luminosidade</string>
 </resources>

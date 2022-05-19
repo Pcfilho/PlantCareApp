@@ -6,11 +6,14 @@ import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 import java.util.*
 
+
+
 class MQTTmanager (val connectionParams: MQTTConnectionParams, val context: Context) {
 
     private var client = MqttAndroidClient(context,connectionParams.host,connectionParams.clientId + id(context))
     private var uniqueID:String? = null
     private val PREF_UNIQUE_ID = "PREF_UNIQUE_ID"
+    private var response = false
 
     init {
 
@@ -29,23 +32,22 @@ class MQTTmanager (val connectionParams: MQTTConnectionParams, val context: Cont
     }
     fun connect(){
         val mqttConnectOptions = MqttConnectOptions()
-        mqttConnectOptions.setAutomaticReconnect(true)
-        mqttConnectOptions.setCleanSession(false)
-        //mqttConnectOptions.setUserName(this.connectionParams.username)
-        //mqttConnectOptions.setPassword(this.connectionParams.password.toCharArray())
+        mqttConnectOptions.isAutomaticReconnect = true
+        mqttConnectOptions.isCleanSession = false
+
         try
         {
-            var params = this.connectionParams
+            val params = this.connectionParams
             client.connect(mqttConnectOptions, null, object: IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
                     val disconnectedBufferOptions = DisconnectedBufferOptions()
-                    disconnectedBufferOptions.setBufferEnabled(true)
-                    disconnectedBufferOptions.setBufferSize(100)
-                    disconnectedBufferOptions.setPersistBuffer(false)
-                    disconnectedBufferOptions.setDeleteOldestMessages(false)
+                    disconnectedBufferOptions.isBufferEnabled = true
+                    disconnectedBufferOptions.bufferSize = 100
+                    disconnectedBufferOptions.isPersistBuffer = false
+                    disconnectedBufferOptions.isDeleteOldestMessages = false
                     client.setBufferOpts(disconnectedBufferOptions)
                     subscribe(params.topic)
-
+                    response = true
                 }
                 override fun onFailure(asyncActionToken: IMqttToken, exception:Throwable) {
                     Log.w("Mqtt", "Failed to connect to: " + params.host + exception.toString())
@@ -56,6 +58,8 @@ class MQTTmanager (val connectionParams: MQTTConnectionParams, val context: Cont
             ex.printStackTrace()
         }
     }
+
+    fun isConnected() : Boolean = response
 
     fun disconnect(){
         try {
@@ -130,7 +134,7 @@ class MQTTmanager (val connectionParams: MQTTConnectionParams, val context: Cont
     fun publish(message:String){
         try
         {
-            var msg = "0001 $message"
+            var msg = message
             client.publish(this.connectionParams.topic,msg.toByteArray(),0,false,null,object :
                 IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken?) {
